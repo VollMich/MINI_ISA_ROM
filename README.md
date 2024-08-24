@@ -50,3 +50,15 @@ The rom is directly connected to ADR0-ADR14 (32K). The Jumpers pins in the jumpe
 ## OK, give me an example
 This is the Address C0000, the base address of the memory range for option roms. It's binary representation is: 1100 0000 0000 0000 0000. if you write C0000 differently you get: 1 1000 000000000000000. The four separated bits on the left are connected to the jumper block from right to left. If you read it from right to left, you get 0001. There is one more step to do. You need to invert the value because a set jumper pulls the bit low. It's inverse logic. 
 You get 1110. Hooray, this is the jumper setting for C0000.
+
+## On writing a rom to this huge 32K chip (27C256). 
+---------------------------------------------------------------------------------
+If you just want to write a single rom to your chip, you can do so. Just make sure that your rom is aligned properly. Every rom has a header which contains the length of the rom. The length of the rom must be a multiple of 2K (it's 512B but there are some motherboards, that need the rom size to be a multiple of 2K, so it's best practice to follow this rule). If you downloaded a rom from xtide, it's probably not aligned. At least current binary downloads aren't. You need to run XTIDECFG.EXE to align the rom properly. The tool will pump up the size to the next 2K-border and calculate a proper 3-byte checksum at the end of the rom. Remember that you need to use the version of XTIDECFG.EXE, that was supplied with your roms. If you save the rom to a file, it is ready to be written with your eprom writer. When you are loading the file into your writer, you can select "Clear buffer when loading the file: Clear buffer with 0x00". The checksum does not have to be calculated again. The zeros at the end of the rom will be seen by your system and the range will be occupied, but only the first, properly aligned and properly checksummed area will be recognized as rom. And it will work fine. 
+
+## On writing multiple roms on one chip
+No one can stop you from loading multiple roms into the 32K of the 27c256. As long as you align them on 2K-adresses and supply the images with the correct headers and checksums, they will each be recognized as separate rom without a problem.
+
+Happy retrocomputing ;)
+
+Phonox
+
