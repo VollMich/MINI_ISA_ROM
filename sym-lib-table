@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "ISA-BOOT-ROM-rescue")(type "KiCad")(uri "${KIPRJMOD}/ISA-BOOT-ROM-rescue.kicad_sym")(options "")(descr ""))
+)
