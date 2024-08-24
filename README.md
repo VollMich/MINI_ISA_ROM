@@ -12,7 +12,7 @@ The rom is directly connected to ADR0-ADR14 (32K). The Jumpers on this card are 
 | Jumper (upper pin)| Signal Name| Connected to...| Used for...| Comment |
 |-------------------|-----------|----------------|-------------|---------|
 |J1                | P0        | 47LS688-PIN2   | pulled up via resistor network, to be compared to ADR15||
-|J2                | P1        | 47LS688-PIN4   | pulled up via resistor network, to be compared to ADR16| Watch out if you got hold of AnotherMaker's version on PCBWay. This line is missing on his PCB, J2 is useless on his card.|
+|J2                | P1        | 47LS688-PIN4   | pulled up via resistor network, to be compared to ADR16| Watch out if you got hold of AnotherMaker's version of this PCB on PCBWay. This line is missing on his layout, J2 is useless on his card.|
 |J3                | P2        | 47LS688-PIN6   | pulled up via resistor network, to be compared to ADR17||
 |J4                | P3        | 47LS688-PIN8   | pulled up via resistor network, to be compared to ADR18||
 
@@ -25,10 +25,10 @@ I built this version of his PCB to supply it with a proper silk screen. The comp
 |1000|F000| F000-F7FF | INVALID | too high for option rom, DO NOT USE!||
 |0100|E800| E800-EFFF | INVALID | too high for option rom, DO NOT USE!||
 |1100|E000| E000-E7FF | INVALID | too high for option rom, DO NOT USE!||
-|0010|D800| D800-DFFF | VALID   | valid 32K block for a 27C256 Rom    || 
-|1010|D000| D000-D7FF | VALID   | valid 32K block for a 27C256 Rom    ||
-|0110|C800| C800-CFFF | VALID   | valid 32K block for a 27C256 Rom    | If you happen to have built AnotherMaker's version of this PCB, be aware, that there is a signal line missing between J2 on his PCB| 
-|1110|C000| C000-C7FF | VALID   | valid 32K block for a 27C256 Rom    | If you happen to have built AnotherMaker's version of this PCB, be aware, that there is a signal line missing between J2 on his PCB|  
+|**0010**|**D800**| **D800-DFFF** | **VALID**   | valid 32K block for a 27C256 Rom    || 
+|**1010**|**D000**| **D000-D7FF** | **VALID**   | valid 32K block for a 27C256 Rom    ||
+|**0110**|**C800**| **C800-CFFF** | **VALID**   | valid 32K block for a 27C256 Rom    | If you happen to have built AnotherMaker's version of this PCB, be aware, that there is a signal line missing between J2 on his PCB, this setting doesn't work on his card| 
+|**1110**|**C000**| **C000-C7FF** | **VALID**   | valid 32K block for a 27C256 Rom    | If you happen to have built AnotherMaker's version of this PCB, be aware, that there is a signal line missing between J2 on his PCB, this setting doesn't work on his card|  
 |0001|B800| B800-BFFF | INVALID | too low for option rom, DO NOT USE! ||
 |1001|B000| B000-B7FF | INVALID | too low for option rom, DO NOT USE! ||
 |0101|A800| A800-AFFF | INVALID | too low for option rom, DO NOT USE! ||
