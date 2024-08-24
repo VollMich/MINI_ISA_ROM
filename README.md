@@ -1,6 +1,6 @@
 # MINI_ISA_ROM Card
 
-the original design is from wiretap, who published it in a [thread on vogons](https://www.vogons.org/viewtopic.php?t=82499).
+the original design is from wiretap is awesome! He published it a while ago in a [thread on vogons](https://www.vogons.org/viewtopic.php?t=82499).
 
 ![image of pcb](https://github.com/VollMich/MINI_ISA_ROM/blob/main/front_new.png?raw=true)
 
