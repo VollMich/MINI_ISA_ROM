@@ -9,24 +9,33 @@ Wiretap's design is flawless except for the jumper table on the silk screen, whi
 
 |J1-J4|Base Address| Range | Validity | Usable? | Comment |
 |-----|------------|-------|----------|---------|---------|
-|0000|F800| F800-FFFF | INVALID | too high for option rom, DO NOT USE!||
-|1000|F000| F000-F7FF | INVALID | too high for option rom, DO NOT USE!||
-|0100|E800| E800-EFFF | INVALID | too high for option rom, DO NOT USE!||
-|1100|E000| E000-E7FF | INVALID | too high for option rom, DO NOT USE!||
-|**0010**|**D800**| **D800-DFFF** | **VALID**   | valid 32K block for a 27C256 Rom    || 
-|**1010**|**D000**| **D000-D7FF** | **VALID**   | valid 32K block for a 27C256 Rom    ||
-|**0110**|**C800**| **C800-CFFF** | **VALID**   | valid 32K block for a 27C256 Rom    | If you happen to have built AnotherMaker's version of this PCB, be aware, that there is a signal line missing between J2 on his PCB, this setting doesn't work on his card| 
-|**1110**|**C000**| **C000-C7FF** | **VALID**   | valid 32K block for a 27C256 Rom    | If you happen to have built AnotherMaker's version of this PCB, be aware, that there is a signal line missing between J2 on his PCB, this setting doesn't work on his card|  
-|0001|B800| B800-BFFF | INVALID | too low for option rom, DO NOT USE! ||
-|1001|B000| B000-B7FF | INVALID | too low for option rom, DO NOT USE! ||
-|0101|A800| A800-AFFF | INVALID | too low for option rom, DO NOT USE! ||
-|1101|A000| A000-A7FF | INVALID | too low for option rom, DO NOT USE! ||
-|0011|9800| 9800-9FFF | INVALID | too low for option rom, DO NOT USE! ||
-|1011|9000| 9000-97FF | INVALID | too low for option rom, DO NOT USE! ||
-|0111|8800| 8800-8FFF | INVALID | too low for option rom, DO NOT USE! ||
-|1111|8000| 8000-87FF | INVALID | too low for option rom, DO NOT USE! ||
+|0000|F800| F8000-FFFFF | INVALID | too high for option rom, DO NOT USE!||
+|1000|F000| F0000-F7FFF | INVALID | too high for option rom, DO NOT USE!||
+|0100|E800| E8000-EFFFF | INVALID | too high for option rom, DO NOT USE!||
+|1100|E000| E0000-E7FFF | INVALID | too high for option rom, DO NOT USE!||
+|**0010**|**D800**| **D8000-DFFFF** | **VALID**   | valid 32K block for a 27C256 Rom    || 
+|**1010**|**D000**| **D0000-D7FFF** | **VALID**   | valid 32K block for a 27C256 Rom    ||
+|**0110**|**C800**| **C8000-CFFFF** | **VALID**   | valid 32K block for a 27C256 Rom    | If you happen to have built AnotherMaker's version of this PCB, be aware, that there is a signal line missing between J2 on his PCB, this setting doesn't work on his card| 
+|**1110**|**C000**| **C0000-C7FFF** | **VALID**   | valid 32K block for a 27C256 Rom    | VGA roms often start at C000. If you have a VGA card in your system, this range is probably occupied. If you happen to have built AnotherMaker's version of this PCB, be aware, that there is a signal line missing between J2 on his PCB, this setting doesn't work on his card.|  
+|0001|B800| B8000-BFFFF | INVALID | too low for option rom, DO NOT USE! ||
+|1001|B000| B0000-B7FFF | INVALID | too low for option rom, DO NOT USE! ||
+|0101|A800| A8000-AFFFF | INVALID | too low for option rom, DO NOT USE! ||
+|1101|A000| A0000-A7FFF | INVALID | too low for option rom, DO NOT USE! ||
+|0011|9800| 98000-9FFFF | INVALID | too low for option rom, DO NOT USE! ||
+|1011|9000| 90000-97FFF | INVALID | too low for option rom, DO NOT USE! ||
+|0111|8800| 88000-8FFFF | INVALID | too low for option rom, DO NOT USE! ||
+|1111|8000| 80000-87FFF | INVALID | too low for option rom, DO NOT USE! ||
 
-There are really just four valid jumper settings out of sixteen possible combinations. All the other addresses wouldn't be recognized as option roms or even cause address conflicts with other resources. The reason is the huge rom size of 32K and the designers choice, to map the full size of the rom. The rom is directly attached to ADR0-ADR14 (which is 32K). With this low count of parts, it was kind of mandatory to use ADR15-ADR18 for address comparison. But only four combinations of J1-J4 wich are used to compare to ADR15-ADR18 end up in the address range for option roms.
+There are really just four valid jumper settings out of sixteen possible combinations. All the other addresses wouldn't be recognized as option roms or even cause address conflicts with other resources. The reason is the huge rom size of 32K and the designers choice, to map the full size of the rom. The rom is directly attached to ADR0-ADR14 (which is 32K). With this low count of parts, it was kind of mandatory to use ADR15-ADR18 for address comparison. But only four combinations of J1-J4 wich are used to compare to ADR15-ADR18 end up in the address range for option roms, which is only 128K. There are only four 32K blocks possible in this range. Other cards can set more addresses, because they use smaller roms and hence, smaller blocks like 16K, 8K or even smaller. With this card you can use only one of four valid 32K blocks between C000 and DFFF. 
+
+these are: 
+
+|J1-J4|Base Address| Range | Block size |
+|-----|------------|-------|------------|
+|**0010**|**D800**| **D8000-DFFFF** | 32K|
+|**1010**|**D000**| **D0000-D7FFF** | 32K|
+|**0110**|**C800**| **C8000-CFFFF** | 32K|
+|**1110**|**C000**| **C0000-C7FFF** | 32K|
 
 ## How does the address selection work?
 The rom is directly connected to ADR0-ADR14 (32K). The Jumpers pins in the jumper block on this card are connected to ADR15-ADR18 left to right. The msb is on the right. The pins are pulled up to 5V by the 10K resistor network. If you set a jumper, the line is pulled down to 0V. The jumpers are connected as follows:
