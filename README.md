@@ -7,7 +7,7 @@ the original design is from wiretap and it is awesome! He published it a while a
 Wiretap's design is flawless except for the jumper table on the silk screen, which doesn't show the correct settings for the card. But his card works great otherwise.
 
 ## How does the address selection work?
-The rom is directly connected to ADR0-ADR14 (32K). The Jumpers on this card are connected to ADR15-ADR18. The pins in the jumper block are connected to ADR15-ADR18 left to right, the msb is on the right. The pins are pulled up to 5V by the 10K resistor network. If you set a jumper, the line is pulled down to 0V. The jumpers are connected as follows:
+The rom is directly connected to ADR0-ADR14 (32K). The Jumpers pins in the jumper block on this card are connected to ADR15-ADR18 left to right. The msb is on the right. The pins are pulled up to 5V by the 10K resistor network. If you set a jumper, the line is pulled down to 0V. The jumpers are connected as follows:
 
 | Jumper (upper pin)| Signal Name| Connected to...| Used for...| Comment |
 |-------------------|-----------|----------------|-------------|---------|
